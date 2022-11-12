@@ -1,0 +1,12 @@
+Needed fixes and feedback:
+Allocate 2 words = 8 bytes, not 2 bytes
+uintptr_t is 64 bits on 64 bit systems, so 8 bytes itself
+pointer arithmetic is based off of the type of the pointer
+pointer itself *should* be either 32 or 64 bits
+	 depending on x32 vs x64 system usually
+Should have used an offset to the next memory, 
+rather than storing pointers inside the memory
+
+if the input pointer already fits the requested length,
+ then just return the pointer you were given since it's already big enough
+If hrealloc calls null then just call hmalloc
